@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 11, 2020 at 11:48 AM
+-- Generation Time: Jun 11, 2020 at 04:03 PM
 -- Server version: 10.1.44-MariaDB-0ubuntu0.18.04.1
 -- PHP Version: 7.2.26-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -50,11 +50,12 @@ CREATE TABLE `agama` (
 --
 
 INSERT INTO `agama` (`id_agama`, `agama`) VALUES
-(1, 'ISLAM'),
+(1, 'ISLAM1'),
 (2, 'KRISTEN'),
 (3, 'HINDU'),
 (4, 'BUDDHA'),
-(5, 'KONG HU CHU');
+(5, 'KONG HU CHU'),
+(6, 'Kong guang');
 
 -- --------------------------------------------------------
 
@@ -91,8 +92,22 @@ CREATE TABLE `aturan` (
 
 CREATE TABLE `hari_efektif` (
   `id_hari_efektif` int(11) NOT NULL,
-  `nama_hari_efektif` varchar(10) DEFAULT NULL
+  `nama_hari_efektif` varchar(10) NOT NULL,
+  `status_hari_efektif` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hari_efektif`
+--
+
+INSERT INTO `hari_efektif` (`id_hari_efektif`, `nama_hari_efektif`, `status_hari_efektif`) VALUES
+(1, 'Senin', 1),
+(2, 'Selasa', 1),
+(3, 'Rabu', 1),
+(4, 'Kamis', 1),
+(5, 'Jum\'at', 1),
+(6, 'Sabtu', 0),
+(7, 'Minggu', 0);
 
 -- --------------------------------------------------------
 
@@ -117,6 +132,13 @@ CREATE TABLE `jurusan` (
   `jurusan` varchar(50) DEFAULT NULL,
   `kepala_jurusan` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `jurusan`
+--
+
+INSERT INTO `jurusan` (`id_jurusan`, `jurusan`, `kepala_jurusan`) VALUES
+(1, 'Rekayasa Perangkat Lunak', 'Defri Indra Mahardika1');
 
 -- --------------------------------------------------------
 
@@ -207,7 +229,7 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `id_agama`, `nama_pegawai`, `alamat_pegawai`, `jenis_kelamin_pegawai`, `no_hp_pegawai`, `status_kepegawaian`, `jabatan_pegawai`, `foto_pegawai`) VALUES
-(1, 1, 'admin', 'admin', 'L', '081234567890', 'Pegawai Tetap', 'Teknisi', NULL);
+(1, 1, 'admin', 'admin', 'L', '081234567890', 'Pegawai Tetap', 'Teknisi', '');
 
 -- --------------------------------------------------------
 
@@ -416,7 +438,8 @@ ALTER TABLE `aturan`
 -- Indexes for table `hari_efektif`
 --
 ALTER TABLE `hari_efektif`
-  ADD PRIMARY KEY (`id_hari_efektif`);
+  ADD PRIMARY KEY (`id_hari_efektif`),
+  ADD UNIQUE KEY `nama_hari_efektif` (`nama_hari_efektif`);
 
 --
 -- Indexes for table `hari_tidak_efektif`
@@ -565,7 +588,7 @@ ALTER TABLE `absensi`
 -- AUTO_INCREMENT for table `agama`
 --
 ALTER TABLE `agama`
-  MODIFY `id_agama` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_agama` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `aturan`
@@ -574,10 +597,16 @@ ALTER TABLE `aturan`
   MODIFY `id_aturan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `hari_efektif`
+--
+ALTER TABLE `hari_efektif`
+  MODIFY `id_hari_efektif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `jurusan`
 --
 ALTER TABLE `jurusan`
-  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `kategori_aturan`
