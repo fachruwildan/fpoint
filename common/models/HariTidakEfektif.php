@@ -17,8 +17,6 @@ class HariTidakEfektif extends BaseHariTidakEfektif
     {
         return array_replace_recursive(parent::rules(),
 	    [
-            [['id_hari_tidak_efektif'], 'required'],
-            [['id_hari_tidak_efektif'], 'integer'],
             [['tanggal_tidak_efektif'], 'safe'],
             [['keterangan_tidak_efektif'], 'string']
         ]);

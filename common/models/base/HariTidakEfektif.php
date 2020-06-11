@@ -23,7 +23,6 @@ class HariTidakEfektif extends \yii\db\ActiveRecord
     public function relationNames()
     {
         return [
-            ''
         ];
     }
 
@@ -33,8 +32,6 @@ class HariTidakEfektif extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_hari_tidak_efektif'], 'required'],
-            [['id_hari_tidak_efektif'], 'integer'],
             [['tanggal_tidak_efektif'], 'safe'],
             [['keterangan_tidak_efektif'], 'string']
         ];
@@ -56,7 +53,7 @@ class HariTidakEfektif extends \yii\db\ActiveRecord
         return [
             'id_hari_tidak_efektif' => 'Id Hari Tidak Efektif',
             'tanggal_tidak_efektif' => 'Tanggal Tidak Efektif',
-            'keterangan_tidak_efektif' => 'Keterangan Tidak Efektif',
+            'keterangan_tidak_efektif' => 'Keterangan',
         ];
     }
 
