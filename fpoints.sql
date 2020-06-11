@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 11, 2020 at 04:03 PM
+-- Generation Time: Jun 11, 2020 at 04:46 PM
 -- Server version: 10.1.44-MariaDB-0ubuntu0.18.04.1
 -- PHP Version: 7.2.26-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -120,6 +120,14 @@ CREATE TABLE `hari_tidak_efektif` (
   `tanggal_tidak_efektif` date DEFAULT NULL,
   `keterangan_tidak_efektif` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hari_tidak_efektif`
+--
+
+INSERT INTO `hari_tidak_efektif` (`id_hari_tidak_efektif`, `tanggal_tidak_efektif`, `keterangan_tidak_efektif`) VALUES
+(3, '2020-06-01', 'an only install one of: mpdf/mpdf[v8.0.6, v7.1.8].\r\n    - Installation request for mpdf/mpdf (locked at v7.1.8) -> satisfiable by mpdf/mpdf[v7.1.8].'),
+(4, '2020-06-02', 'an only install one of: mpdf/mpdf[v8.0.6, v7.1.8].\r\n    - Installation request for mpdf/mpdf (locked at v7.1.8) -> satisfiable by mpdf/mpdf[v7.1.8].');
 
 -- --------------------------------------------------------
 
@@ -601,6 +609,12 @@ ALTER TABLE `aturan`
 --
 ALTER TABLE `hari_efektif`
   MODIFY `id_hari_efektif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `hari_tidak_efektif`
+--
+ALTER TABLE `hari_tidak_efektif`
+  MODIFY `id_hari_tidak_efektif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `jurusan`
