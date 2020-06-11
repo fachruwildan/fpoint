@@ -30,40 +30,33 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header">
-                    <div class="row">
-                        <div class="<?= ($generator->saveAsNew) ? "col-sm-8" : "col-sm-9";?>">
-                            <h2><?= "<?= " ?><?= $generator->generateString(Inflector::camel2words(StringHelper::basename($generator->modelClass))) ?>.' '. Html::encode($this->title) ?></h2>
-                        </div>
-                        <div class="<?= ($generator->saveAsNew) ? "col-sm-4" : "col-sm-3";?>" style="margin-top: 15px">
-                        <?php if ($generator->pdf): ?>
-                        <?= "<?= " ?>
-                            <?= "
-                                Html::a('<i class=\"fa glyphicon glyphicon-hand-up\"></i> ' . " . $generator->generateString('PDF') . ", 
-                                    ['pdf', $urlParams],
-                                    [
-                                        'class' => 'btn btn-danger',
-                                        'target' => '_blank',
-                                        'data-toggle' => 'tooltip',
-                                        'title' => " . $generator->generateString('Will open the generated PDF file in a new window') . "
-                                    ]
-                                )?>\n"
-                            ?>
-                            <?php endif; ?>
-                            <?php if($generator->saveAsNew): ?>
-                            <?= "            <?= Html::a(" . $generator->generateString('Save As New') . ", ['save-as-new', " . $generator->generateUrlParams() . "], ['class' => 'btn btn-info']) ?>" ?>
-                            <?php endif;?>
-                            <?= "
-                                <?= Html::a(" . $generator->generateString('Update') . ", ['update', " . $generator->generateUrlParams() . "], ['class' => 'btn btn-primary']) ?>
-                                <?= Html::a(" . $generator->generateString('Delete') . ", ['delete', " . $generator->generateUrlParams() . "], [
+                    <?php if ($generator->pdf): ?>
+                    <?= "<?= " ?>
+                        <?= "
+                            Html::a('<i class=\"fa glyphicon glyphicon-hand-up\"></i> ' . " . $generator->generateString('PDF') . ", 
+                                ['pdf', $urlParams],
+                                [
                                     'class' => 'btn btn-danger',
-                                    'data' => [
-                                        'confirm' => " . $generator->generateString('Are you sure you want to delete this item?') . ",
-                                        'method' => 'post',
-                                    ],
-                                ])
-                                ?>\n" ?>
-                        </div>
-                    </div>
+                                    'target' => '_blank',
+                                    'data-toggle' => 'tooltip',
+                                    'title' => " . $generator->generateString('Will open the generated PDF file in a new window') . "
+                                ]
+                            )?>\n"
+                        ?>
+                        <?php endif; ?>
+                        <?php if($generator->saveAsNew): ?>
+                        <?= "            <?= Html::a(" . $generator->generateString('Save As New') . ", ['save-as-new', " . $generator->generateUrlParams() . "], ['class' => 'btn btn-info']) ?>" ?>
+                        <?php endif;?>
+                        <?= "
+                            <?= Html::a(" . $generator->generateString('Update') . ", ['update', " . $generator->generateUrlParams() . "], ['class' => 'btn btn-primary']) ?>
+                            <?= Html::a(" . $generator->generateString('Delete') . ", ['delete', " . $generator->generateUrlParams() . "], [
+                                'class' => 'btn btn-danger',
+                                'data' => [
+                                    'confirm' => " . $generator->generateString('Are you sure you want to delete this item?') . ",
+                                    'method' => 'post',
+                                ],
+                            ])
+                            ?>\n" ?>
                 </div>
                 <div class="box-body">
                     <!-- <div class="row"> -->
