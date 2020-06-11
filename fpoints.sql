@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 11, 2020 at 09:25 AM
+-- Generation Time: Jun 11, 2020 at 11:48 AM
 -- Server version: 10.1.44-MariaDB-0ubuntu0.18.04.1
 -- PHP Version: 7.2.26-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -97,10 +97,10 @@ CREATE TABLE `hari_efektif` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hari_tidak_efek`
+-- Table structure for table `hari_tidak_efektif`
 --
 
-CREATE TABLE `hari_tidak_efek` (
+CREATE TABLE `hari_tidak_efektif` (
   `id_hari_tidak_efektif` int(11) NOT NULL,
   `tanggal_tidak_efektif` date DEFAULT NULL,
   `keterangan_tidak_efektif` text
@@ -419,9 +419,9 @@ ALTER TABLE `hari_efektif`
   ADD PRIMARY KEY (`id_hari_efektif`);
 
 --
--- Indexes for table `hari_tidak_efek`
+-- Indexes for table `hari_tidak_efektif`
 --
-ALTER TABLE `hari_tidak_efek`
+ALTER TABLE `hari_tidak_efektif`
   ADD PRIMARY KEY (`id_hari_tidak_efektif`);
 
 --
