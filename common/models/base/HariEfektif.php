@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id_hari_efektif
  * @property string $nama_hari_efektif
+ * @property integer $status_hari_efektif
  */
 class HariEfektif extends \yii\db\ActiveRecord
 {
@@ -22,7 +23,6 @@ class HariEfektif extends \yii\db\ActiveRecord
     public function relationNames()
     {
         return [
-            ''
         ];
     }
 
@@ -32,9 +32,10 @@ class HariEfektif extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_hari_efektif'], 'required'],
-            [['id_hari_efektif'], 'integer'],
-            [['nama_hari_efektif'], 'string', 'max' => 10]
+            [['nama_hari_efektif', 'status_hari_efektif'], 'required'],
+            [['nama_hari_efektif'], 'string', 'max' => 10],
+            [['status_hari_efektif'], 'string', 'max' => 1],
+            [['nama_hari_efektif'], 'unique']
         ];
     }
 
@@ -53,7 +54,8 @@ class HariEfektif extends \yii\db\ActiveRecord
     {
         return [
             'id_hari_efektif' => 'Id Hari Efektif',
-            'nama_hari_efektif' => 'Nama Hari Efektif',
+            'nama_hari_efektif' => 'Nama Hari',
+            'status_hari_efektif' => 'Status Hari',
         ];
     }
 

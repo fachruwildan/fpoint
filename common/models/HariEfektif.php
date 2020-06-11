@@ -17,9 +17,10 @@ class HariEfektif extends BaseHariEfektif
     {
         return array_replace_recursive(parent::rules(),
 	    [
-            [['id_hari_efektif'], 'required'],
-            [['id_hari_efektif'], 'integer'],
-            [['nama_hari_efektif'], 'string', 'max' => 10]
+            [['nama_hari_efektif', 'status_hari_efektif'], 'required'],
+            [['nama_hari_efektif'], 'string', 'max' => 10],
+            [['status_hari_efektif'], 'string', 'max' => 1],
+            [['nama_hari_efektif'], 'unique']
         ]);
     }
 	
