@@ -105,6 +105,10 @@ a.desc:after {
     padding-top: 3rem;
 }
 
+.iti {
+    display: block;
+}
+
 @media(max-width:767px) {
     .nav li > form > button.logout {
         display:block;
