@@ -80,4 +80,8 @@ class Sp extends \yii\db\ActiveRecord
     {
         return new \app\models\SpQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

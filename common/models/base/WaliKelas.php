@@ -86,4 +86,8 @@ class WaliKelas extends \yii\db\ActiveRecord
     {
         return new \app\models\WaliKelasQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

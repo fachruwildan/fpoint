@@ -223,4 +223,8 @@ class Siswa extends \yii\db\ActiveRecord
     {
         return new \app\models\SiswaQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

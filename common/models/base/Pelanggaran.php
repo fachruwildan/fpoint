@@ -88,4 +88,8 @@ class Pelanggaran extends \yii\db\ActiveRecord
     {
         return new \app\models\PelanggaranQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

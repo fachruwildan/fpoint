@@ -76,4 +76,8 @@ class NamaKelas extends \yii\db\ActiveRecord
     {
         return new \app\models\NamaKelasQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

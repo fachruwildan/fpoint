@@ -88,4 +88,8 @@ class Prestasi extends \yii\db\ActiveRecord
     {
         return new \app\models\PrestasiQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

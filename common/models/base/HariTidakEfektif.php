@@ -66,4 +66,8 @@ class HariTidakEfektif extends \yii\db\ActiveRecord
     {
         return new \app\models\HariTidakEfektifQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

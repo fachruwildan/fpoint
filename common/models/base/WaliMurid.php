@@ -113,4 +113,8 @@ class WaliMurid extends \yii\db\ActiveRecord
     {
         return new \app\models\WaliMuridQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

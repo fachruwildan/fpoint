@@ -88,4 +88,8 @@ class Absensi extends \yii\db\ActiveRecord
     {
         return new \app\models\AbsensiQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

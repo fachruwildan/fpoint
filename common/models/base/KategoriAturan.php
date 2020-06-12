@@ -74,4 +74,8 @@ class KategoriAturan extends \yii\db\ActiveRecord
     {
         return new \app\models\KategoriAturanQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

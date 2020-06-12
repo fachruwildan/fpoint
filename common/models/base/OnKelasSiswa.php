@@ -85,4 +85,8 @@ class OnKelasSiswa extends \yii\db\ActiveRecord
     {
         return new \app\models\OnKelasSiswaQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

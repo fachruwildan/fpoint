@@ -114,4 +114,8 @@ class Aturan extends \yii\db\ActiveRecord
     {
         return new \app\models\AturanQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

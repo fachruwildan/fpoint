@@ -88,4 +88,8 @@ class AkumulasiPoint extends \yii\db\ActiveRecord
     {
         return new \app\models\AkumulasiPointQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

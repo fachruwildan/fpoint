@@ -68,4 +68,8 @@ class HariEfektif extends \yii\db\ActiveRecord
     {
         return new \app\models\HariEfektifQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

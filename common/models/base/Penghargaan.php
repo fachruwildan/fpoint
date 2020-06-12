@@ -87,4 +87,8 @@ class Penghargaan extends \yii\db\ActiveRecord
     {
         return new \app\models\PenghargaanQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }

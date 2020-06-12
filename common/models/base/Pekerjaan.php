@@ -74,4 +74,8 @@ class Pekerjaan extends \yii\db\ActiveRecord
     {
         return new \app\models\PekerjaanQuery(get_called_class());
     }
+     
+    public function formName() {
+        return '';
+    }
 }
