@@ -46,7 +46,8 @@ class Kelas extends \yii\db\ActiveRecord
     {
         return [
             [['id_jurusan', 'id_wali_kelas'], 'integer'],
-            [['kelas', 'grade'], 'string', 'max' => 3]
+            [['kelas', 'grade'], 'string', 'max' => 3],
+            [['id_wali_kelas'], 'unique']
         ];
     }
 
@@ -120,5 +121,9 @@ class Kelas extends \yii\db\ActiveRecord
     public static function find()
     {
         return new \app\models\KelasQuery(get_called_class());
+    }
+    
+    public function formName() {
+        return '';
     }
 }
