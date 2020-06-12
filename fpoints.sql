@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 12, 2020 at 10:03 AM
+-- Generation Time: Jun 12, 2020 at 12:06 PM
 -- Server version: 10.1.44-MariaDB-0ubuntu0.18.04.1
 -- PHP Version: 7.2.26-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -187,6 +187,14 @@ CREATE TABLE `kelas` (
   `kelas` varchar(3) DEFAULT NULL,
   `grade` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id_kelas`, `id_jurusan`, `id_wali_kelas`, `kelas`, `grade`) VALUES
+(3, 1, 8, 'A', 'XII'),
+(10, 1, 4, 'B', 'XII');
 
 -- --------------------------------------------------------
 
@@ -419,9 +427,17 @@ INSERT INTO `user` (`id`, `id_pegawai`, `username`, `auth_key`, `password_hash`,
 --
 
 CREATE TABLE `wali_kelas` (
-  `id_wali_kelas` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id_wali_kelas` int(11) NOT NULL,
   `id_pegawai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wali_kelas`
+--
+
+INSERT INTO `wali_kelas` (`id_wali_kelas`, `id_pegawai`) VALUES
+(4, 1),
+(8, 2);
 
 -- --------------------------------------------------------
 
@@ -503,6 +519,7 @@ ALTER TABLE `kategori_aturan`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id_kelas`),
+  ADD UNIQUE KEY `id_wali_kelas` (`id_wali_kelas`),
   ADD KEY `FK_ON_JURUSAN_KELAS` (`id_jurusan`),
   ADD KEY `FK_ON_WALIKELAS` (`id_wali_kelas`);
 
@@ -602,6 +619,8 @@ ALTER TABLE `user`
 -- Indexes for table `wali_kelas`
 --
 ALTER TABLE `wali_kelas`
+  ADD PRIMARY KEY (`id_wali_kelas`),
+  ADD UNIQUE KEY `id_pegawai` (`id_pegawai`),
   ADD KEY `FK_ON_PEGAWAI_WALIKELAS` (`id_pegawai`);
 
 --
@@ -662,13 +681,7 @@ ALTER TABLE `kategori_aturan`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `nama_kelas`
---
-ALTER TABLE `nama_kelas`
-  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
@@ -723,6 +736,12 @@ ALTER TABLE `tindakan`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `wali_kelas`
+--
+ALTER TABLE `wali_kelas`
+  MODIFY `id_wali_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `wali_murid`
