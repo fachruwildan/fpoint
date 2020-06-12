@@ -48,9 +48,8 @@ class WaliMurid extends \yii\db\ActiveRecord
             [['id_pekerjaan', 'id_agama', 'nama_wali_murid', 'tempat_lahir_wali_murid', 'tanggal_lahir_wali_murid', 'jenis_kelamin_wali_murid', 'alamat_rumah_wali_murid', 'no_hp_wali_murid'], 'required'],
             [['id_pekerjaan', 'id_agama'], 'integer'],
             [['tanggal_lahir_wali_murid'], 'safe'],
-            [['alamat_rumah_wali_murid'], 'string'],
+            [['jenis_kelamin_wali_murid', 'alamat_rumah_wali_murid'], 'string'],
             [['nama_wali_murid', 'tempat_lahir_wali_murid'], 'string', 'max' => 50],
-            [['jenis_kelamin_wali_murid'], 'string', 'max' => 1],
             [['no_hp_wali_murid'], 'string', 'max' => 15]
         ];
     }
@@ -70,14 +69,14 @@ class WaliMurid extends \yii\db\ActiveRecord
     {
         return [
             'id_wali_murid' => 'Id Wali Murid',
-            'id_pekerjaan' => 'Id Pekerjaan',
-            'id_agama' => 'Id Agama',
-            'nama_wali_murid' => 'Nama Wali Murid',
-            'tempat_lahir_wali_murid' => 'Tempat Lahir Wali Murid',
-            'tanggal_lahir_wali_murid' => 'Tanggal Lahir Wali Murid',
-            'jenis_kelamin_wali_murid' => 'Jenis Kelamin Wali Murid',
-            'alamat_rumah_wali_murid' => 'Alamat Rumah Wali Murid',
-            'no_hp_wali_murid' => 'No Hp Wali Murid',
+            'id_pekerjaan' => 'Pekerjaan',
+            'id_agama' => 'Agama',
+            'nama_wali_murid' => 'Nama',
+            'tempat_lahir_wali_murid' => 'Tempat Lahir',
+            'tanggal_lahir_wali_murid' => 'Tanggal Lahir',
+            'jenis_kelamin_wali_murid' => 'Jenis Kelamin',
+            'alamat_rumah_wali_murid' => 'Alamat Rumah',
+            'no_hp_wali_murid' => 'No HP',
         ];
     }
     
