@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 11, 2020 at 04:46 PM
+-- Generation Time: Jun 12, 2020 at 09:09 AM
 -- Server version: 10.1.44-MariaDB-0ubuntu0.18.04.1
 -- PHP Version: 7.2.26-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -84,6 +84,14 @@ CREATE TABLE `aturan` (
   `point_aturan` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `aturan`
+--
+
+INSERT INTO `aturan` (`id_aturan`, `id_kategori`, `id_tindakan`, `pasal`, `uraian_aturan`, `point_aturan`) VALUES
+(4, 2, NULL, 'A1', 'Datang terlambat < 15 menit', 5),
+(5, 2, NULL, 'A2', 'Datang terlambat > 15 menit', 15);
+
 -- --------------------------------------------------------
 
 --
@@ -159,6 +167,13 @@ CREATE TABLE `kategori_aturan` (
   `kategori_aturan` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `kategori_aturan`
+--
+
+INSERT INTO `kategori_aturan` (`id_kategori`, `kategori_aturan`) VALUES
+(2, 'Kehadiran');
+
 -- --------------------------------------------------------
 
 --
@@ -225,7 +240,7 @@ CREATE TABLE `pegawai` (
   `id_agama` int(11) NOT NULL,
   `nama_pegawai` varchar(100) NOT NULL,
   `alamat_pegawai` text NOT NULL,
-  `jenis_kelamin_pegawai` char(1) NOT NULL,
+  `jenis_kelamin_pegawai` enum('L','P') NOT NULL,
   `no_hp_pegawai` varchar(15) NOT NULL,
   `status_kepegawaian` varchar(50) NOT NULL,
   `jabatan_pegawai` varchar(50) NOT NULL,
@@ -237,7 +252,8 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `id_agama`, `nama_pegawai`, `alamat_pegawai`, `jenis_kelamin_pegawai`, `no_hp_pegawai`, `status_kepegawaian`, `jabatan_pegawai`, `foto_pegawai`) VALUES
-(1, 1, 'admin', 'admin', 'L', '081234567890', 'Pegawai Tetap', 'Teknisi', '');
+(1, 1, 'admin', 'admin', 'L', '081234567890', 'Pegawai Tetap', 'Teknisi', ''),
+(2, 1, 'Defri Indra Mahardika', 'Ds. Pulung Kec. Pulung', 'L', '+6285604845437', 'Tetap', 'Teknisi', '');
 
 -- --------------------------------------------------------
 
@@ -249,6 +265,13 @@ CREATE TABLE `pekerjaan` (
   `id_pekerjaan` int(11) NOT NULL,
   `nama_pekerjaan` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pekerjaan`
+--
+
+INSERT INTO `pekerjaan` (`id_pekerjaan`, `nama_pekerjaan`) VALUES
+(1, 'Pegawai Negeri Sipil');
 
 -- --------------------------------------------------------
 
@@ -602,7 +625,7 @@ ALTER TABLE `agama`
 -- AUTO_INCREMENT for table `aturan`
 --
 ALTER TABLE `aturan`
-  MODIFY `id_aturan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_aturan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `hari_efektif`
@@ -626,7 +649,7 @@ ALTER TABLE `jurusan`
 -- AUTO_INCREMENT for table `kategori_aturan`
 --
 ALTER TABLE `kategori_aturan`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kelas`
@@ -644,13 +667,13 @@ ALTER TABLE `nama_kelas`
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pekerjaan`
 --
 ALTER TABLE `pekerjaan`
-  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `penghargaan`
