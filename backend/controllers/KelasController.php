@@ -145,8 +145,16 @@ class KelasController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->deleteWithRelated();
-
+        $trans = Yii::$app->db->beginTransaction();
+        try{
+            $model = $this->findModel($id);
+            $this->namaKelas($model, 'delete');
+            $model->deleteWithRelated();
+            $trans->commit();
+        }catch(\Exception $e){
+            $trans->rollBack();
+            Yii::$app->session->setFlash('error','Error, cant perform this action correctly');
+        }
         return $this->redirect(['index']);
     }
 
@@ -193,7 +201,11 @@ class KelasController extends Controller
         if ($key == 'create') {
             $modelNamaKelas = new NamaKelas();
             $modelNamaKelas->id_kelas = $model->id_kelas;
-        } else {
+        } else if($key == 'delete') {
+            $modelNamaKelas = NamaKelas::findOne($model->id_kelas);
+            $modelNamaKelas->delete();
+            return;
+        } else if($key == 'update') {
             $modelNamaKelas = NamaKelas::findOne($model->id_kelas);
         }
         $modelNamaKelas->nama_kelas = $model->grade . " " . $model->jurusan->jurusan . " " . $model->kelas;
