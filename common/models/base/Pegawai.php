@@ -3,7 +3,7 @@
 namespace common\models\base;
 
 use Yii;
-
+use borales\extensions\phoneInput\PhoneInputValidator;
 /**
  * This is the base model class for table "pegawai".
  *
@@ -47,12 +47,12 @@ class Pegawai extends \yii\db\ActiveRecord
         return [
             [['id_agama', 'nama_pegawai', 'alamat_pegawai', 'jenis_kelamin_pegawai', 'no_hp_pegawai', 'status_kepegawaian', 'jabatan_pegawai'], 'required'],
             [['id_agama'], 'integer'],
-            [['alamat_pegawai'], 'string'],
+            [['alamat_pegawai', 'jenis_kelamin_pegawai'], 'string'],
             [['nama_pegawai'], 'string', 'max' => 100],
-            [['jenis_kelamin_pegawai'], 'string', 'max' => 1],
             [['no_hp_pegawai'], 'string', 'max' => 15],
             [['status_kepegawaian', 'jabatan_pegawai'], 'string', 'max' => 50],
-            [['foto_pegawai'], 'string', 'max' => 255]
+            [['foto_pegawai'], 'string', 'max' => 255],
+            [['no_hp_pegawai'], PhoneInputValidator::className() ]
         ];
     }
 
@@ -71,14 +71,14 @@ class Pegawai extends \yii\db\ActiveRecord
     {
         return [
             'id_pegawai' => 'Id Pegawai',
-            'id_agama' => 'Id Agama',
-            'nama_pegawai' => 'Nama Pegawai',
-            'alamat_pegawai' => 'Alamat Pegawai',
-            'jenis_kelamin_pegawai' => 'Jenis Kelamin Pegawai',
-            'no_hp_pegawai' => 'No Hp Pegawai',
+            'id_agama' => 'Agama',
+            'nama_pegawai' => 'Nama',
+            'alamat_pegawai' => 'Alamat',
+            'jenis_kelamin_pegawai' => 'Jenis Kelamin',
+            'no_hp_pegawai' => 'No Hp',
             'status_kepegawaian' => 'Status Kepegawaian',
-            'jabatan_pegawai' => 'Jabatan Pegawai',
-            'foto_pegawai' => 'Foto Pegawai',
+            'jabatan_pegawai' => 'Jabatan',
+            'foto_pegawai' => 'Foto',
         ];
     }
     
