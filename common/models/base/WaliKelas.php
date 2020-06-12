@@ -10,7 +10,7 @@ use Yii;
  * @property integer $id_wali_kelas
  * @property integer $id_pegawai
  *
- * @property \common\models\Kelas[] $kelas
+ * @property \common\models\Kelas $kelas
  * @property \common\models\Pegawai $pegawai
  */
 class WaliKelas extends \yii\db\ActiveRecord
@@ -36,8 +36,9 @@ class WaliKelas extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_wali_kelas', 'id_pegawai'], 'required'],
-            [['id_wali_kelas', 'id_pegawai'], 'integer']
+            [['id_pegawai'], 'required'],
+            [['id_pegawai'], 'integer'],
+            [['id_pegawai'], 'unique']
         ];
     }
 
@@ -56,7 +57,7 @@ class WaliKelas extends \yii\db\ActiveRecord
     {
         return [
             'id_wali_kelas' => 'Id Wali Kelas',
-            'id_pegawai' => 'Id Pegawai',
+            'id_pegawai' => 'Nama Pegawai',
         ];
     }
     
@@ -65,7 +66,7 @@ class WaliKelas extends \yii\db\ActiveRecord
      */
     public function getKelas()
     {
-        return $this->hasMany(\common\models\Kelas::className(), ['id_wali_kelas' => 'id_wali_kelas']);
+        return $this->hasOne(\common\models\Kelas::className(), ['id_wali_kelas' => 'id_wali_kelas']);
     }
         
     /**

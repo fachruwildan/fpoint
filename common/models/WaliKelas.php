@@ -17,8 +17,9 @@ class WaliKelas extends BaseWaliKelas
     {
         return array_replace_recursive(parent::rules(),
 	    [
-            [['id_wali_kelas', 'id_pegawai'], 'required'],
-            [['id_wali_kelas', 'id_pegawai'], 'integer']
+            [['id_pegawai'], 'required'],
+            [['id_pegawai'], 'integer'],
+            [['id_pegawai'], 'unique']
         ]);
     }
 	
