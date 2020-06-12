@@ -15,15 +15,15 @@ echo "<?php\n";
 ?>
 
 /* @var $this yii\web\View */
-<?= !empty($generator->searchModelClass) ? "/* @var \$searchModel " . ltrim($generator->searchModelClass, '\\') . " */\n" : '' ?>
+<?=!empty($generator->searchModelClass) ? "/* @var \$searchModel " . ltrim($generator->searchModelClass, '\\') . " */\n" : ''?>
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use yii\helpers\Html;
 use kartik\export\ExportMenu;
-use <?= $generator->indexWidgetType === 'grid' ? "kartik\\grid\\GridView;" : "yii\\widgets\\ListView;" ?>
+use <?=$generator->indexWidgetType === 'grid' ? "kartik\\grid\\GridView;" : "yii\\widgets\\ListView;"?>
 
 
-$this->title = <?= ($generator->pluralize) ? $generator->generateString(Inflector::pluralize(Inflector::camel2words($baseModelClass))) : $generator->generateString(Inflector::camel2words($baseModelClass)) ?>;
+$this->title = <?=($generator->pluralize) ? $generator->generateString(Inflector::pluralize(Inflector::camel2words($baseModelClass))) : $generator->generateString(Inflector::camel2words($baseModelClass))?>;
 $this->params['breadcrumbs'][] = $this->title;
 $search = "$('.search-button').click(function(){
 	$('.search-form').toggle(1000);
@@ -31,7 +31,7 @@ $search = "$('.search-button').click(function(){
 });";
 $this->registerJs($search);
 ?>
-<div class="<?= Inflector::camel2id($baseModelClass) ?>-index">
+<div class="<?=Inflector::camel2id($baseModelClass)?>-index">
 
     <div class="row">
         <div class="col-md-12">
@@ -39,31 +39,31 @@ $this->registerJs($search);
                 <div class="box-header">
 
                     <?php if (!empty($generator->searchModelClass)): ?>
-                    <?= "    <?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
-                    <?php endif; ?>
+                    <?="    <?php " . ($generator->indexWidgetType === 'grid' ? "// " : "")?>echo $this->render('_search', ['model' => $searchModel]); ?>
+                    <?php endif;?>
 
                         <p>
-                            <?= "<?= " ?>Html::a(<?= $generator->generateString('Create ' . Inflector::camel2words($baseModelClass)) ?>, ['create'], ['class' => 'btn btn-success']) ?>
+                            <?="<?= "?>Html::a(<?=$generator->generateString('Create ' . Inflector::camel2words($baseModelClass))?>, ['create'], ['class' => 'btn btn-success']) ?>
                     <?php if (!empty($generator->searchModelClass)): ?>
-                            <?= "<?= " ?>Html::a(<?= $generator->generateString('Advance Search')?>, '#', ['class' => 'btn btn-info search-button']) ?>
-                    <?php endif; ?>
+                            <?="<?= "?>Html::a(<?=$generator->generateString('Advance Search')?>, '#', ['class' => 'btn btn-info search-button']) ?>
+                    <?php endif;?>
                         </p>
                     <?php if (!empty($generator->searchModelClass)): ?>
                         <div class="search-form" style="display:none">
-                            <?= "<?= " ?> $this->render('_search', ['model' => $searchModel]); ?>
+                            <?="<?= "?> $this->render('_search', ['model' => $searchModel]); ?>
                         </div>
-                        <?php endif; ?>
+                        <?php endif;?>
                 </div>
                 <div class="box-body">
-                    <?php 
-                        if ($generator->indexWidgetType === 'grid'): 
-                        ?>
-                    <?= "<?php \n" ?>
+                    <?php
+if ($generator->indexWidgetType === 'grid'):
+?>
+                    <?="<?php \n"?>
                         $gridColumn = [
                             ['class' => 'yii\grid\SerialColumn'],
                     <?php
-                        if ($generator->expandable && !empty($fk)):
-                    ?>
+if ($generator->expandable && !empty($fk)):
+?>
                             [
                                 'class' => 'kartik\grid\ExpandRowColumn',
                                 'width' => '50px',
@@ -77,53 +77,52 @@ $this->registerJs($search);
                                 'expandOneOnly' => true
                             ],
                     <?php
-                        endif;
-                    ?>
-                    <?php   
-                        if ($tableSchema === false) :
-                            foreach ($generator->getColumnNames() as $name) {
-                                if (++$count < 6) {
-                                    echo "            '" . $name . "',\n";
-                                } else {
-                                    echo "            // '" . $name . "',\n";
-                                }
-                            }
-                        else :
-                            foreach ($tableSchema->getColumnNames() as $attribute): 
-                                if (!in_array($attribute, $generator->skippedColumns)) :
-                    ?>
-                            <?= $generator->generateGridViewFieldIndex($attribute, $fk, $tableSchema)?>
+endif;
+?>
                     <?php
-                                endif;
-                            endforeach; ?>
+if ($tableSchema === false):
+    foreach ($generator->getColumnNames() as $name) {
+        if (++$count < 6) {
+            echo "            '" . $name . "',\n";
+        } else {
+            echo "            // '" . $name . "',\n";
+        }
+    } else :
+    foreach ($tableSchema->getColumnNames() as $attribute):
+        if (!in_array($attribute, $generator->skippedColumns)):
+        ?>
+		                            <?=$generator->generateGridViewFieldIndex($attribute, $fk, $tableSchema)?>
+		                    <?php
+    endif;
+endforeach;?>
                             [
                                 'class' => 'yii\grid\ActionColumn',
-                    <?php if($generator->saveAsNew): ?>
+                    <?php if ($generator->saveAsNew): ?>
                                 'template' => '{save-as-new} {view} {update} {delete}',
                                 'buttons' => [
                                     'save-as-new' => function ($url) {
                                         return Html::a('<span class="glyphicon glyphicon-copy"></span>', $url, ['title' => 'Save As New']);
                                     },
                                 ],
-                    <?php endif; ?>
+                    <?php endif;?>
                             ],
-                        ]; 
-                    <?php 
-                        endif; 
-                    ?>
+                        ];
+                    <?php
+endif;
+?>
                         ?>
-                        <?= "<?= " ?>GridView::widget([
+                        <?="<?= "?>GridView::widget([
                             'dataProvider' => $dataProvider,
-                            <?= !empty($generator->searchModelClass) ? "'filterModel' => \$searchModel,\n        'columns' => \$gridColumn,\n" : "'columns' => \$gridColumn,\n"; ?>
+                            <?=!empty($generator->searchModelClass) ? "'filterModel' => \$searchModel,\n        'columns' => \$gridColumn,\n" : "'columns' => \$gridColumn,\n";?>
                             'pjax' => true,
-                            'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-<?= Inflector::camel2id(StringHelper::basename($generator->modelClass))?>']],
+                            'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-<?=Inflector::camel2id(StringHelper::basename($generator->modelClass))?>']],
                             'panel' => [
                                 //'type' => GridView::TYPE_PRIMARY,
                                 'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),
                             ],
-                    <?php if(!$generator->pdf) : ?>
+                    <?php if (!$generator->pdf): ?>
                             'export' => false,
-                    <?php endif; ?>
+                    <?php endif;?>
                             // your toolbar can include the additional full export menu
                             'toolbar' => [
                                 '{export}',
@@ -139,7 +138,7 @@ $this->registerJs($search);
                                             '<li class="dropdown-header">Export All Data</li>',
                                         ],
                                     ],
-                    <?php if(!$generator->pdf):?>
+                    <?php if (!$generator->pdf): ?>
                                     'exportConfig' => [
                                         ExportMenu::FORMAT_PDF => false
                                     ]
@@ -147,19 +146,19 @@ $this->registerJs($search);
                                 ]) ,
                             ],
                         ]); ?>
-                    <?php 
-                    else: 
-                    ?>
-                        <?= "<?= " ?>ListView::widget([
+                    <?php
+else:
+?>
+                        <?="<?= "?>ListView::widget([
                             'dataProvider' => $dataProvider,
                             'itemOptions' => ['class' => 'item'],
                             'itemView' => function ($model, $key, $index, $widget) {
                                 return $this->render('_index',['model' => $model, 'key' => $key, 'index' => $index, 'widget' => $widget, 'view' => $this]);
                             },
                         ]) ?>
-                    <?php 
-                    endif; 
-                    ?>
+                    <?php
+endif;
+?>
                 </div>
             </div>
         </div>
