@@ -46,7 +46,17 @@
                             ['label' => 'Tindakan', 'icon' => 'file-code-o', 'url' => ['/tindakan']],
                         ]
                     ],
-
+                    [
+                        'label' => 'Master Siswa & Kelas',
+                        'icon' => 'book',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Wali Kelas', 'icon' => 'file-code-o', 'url' => ['/wali-kelas']],
+                            ['label' => 'Wali Murid', 'icon' => 'file-code-o', 'url' => ['/wali-murid']],
+                            ['label' => 'Kelas', 'icon' => 'file-code-o', 'url' => ['/kelas']],
+                            ['label' => 'Siswa', 'icon' => 'file-code-o', 'url' => ['/siswa']],
+                        ]
+                    ],
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
