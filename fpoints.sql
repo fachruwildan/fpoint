@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 12, 2020 at 09:09 AM
+-- Generation Time: Jun 12, 2020 at 10:03 AM
 -- Server version: 10.1.44-MariaDB-0ubuntu0.18.04.1
 -- PHP Version: 7.2.26-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -271,7 +271,8 @@ CREATE TABLE `pekerjaan` (
 --
 
 INSERT INTO `pekerjaan` (`id_pekerjaan`, `nama_pekerjaan`) VALUES
-(1, 'Pegawai Negeri Sipil');
+(2, 'Wiraswasta'),
+(3, 'Pegawai Negeri Sipil');
 
 -- --------------------------------------------------------
 
@@ -296,6 +297,13 @@ CREATE TABLE `penghargaan` (
   `uraian_penghargaan` text,
   `point_penghargaan` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `penghargaan`
+--
+
+INSERT INTO `penghargaan` (`id_penghargaan`, `uraian_penghargaan`, `point_penghargaan`) VALUES
+(1, 'Membawa nama sekolah ke tingkat Provinsi', 10);
 
 -- --------------------------------------------------------
 
@@ -411,7 +419,7 @@ INSERT INTO `user` (`id`, `id_pegawai`, `username`, `auth_key`, `password_hash`,
 --
 
 CREATE TABLE `wali_kelas` (
-  `id_wali_kelas` int(11) NOT NULL,
+  `id_wali_kelas` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `id_pegawai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -594,7 +602,6 @@ ALTER TABLE `user`
 -- Indexes for table `wali_kelas`
 --
 ALTER TABLE `wali_kelas`
-  ADD PRIMARY KEY (`id_wali_kelas`),
   ADD KEY `FK_ON_PEGAWAI_WALIKELAS` (`id_pegawai`);
 
 --
@@ -673,13 +680,13 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT for table `pekerjaan`
 --
 ALTER TABLE `pekerjaan`
-  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `penghargaan`
 --
 ALTER TABLE `penghargaan`
-  MODIFY `id_penghargaan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penghargaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sanksi`
