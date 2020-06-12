@@ -17,6 +17,8 @@ class NamaKelas extends BaseNamaKelas
     {
         return array_replace_recursive(parent::rules(),
 	    [
+            [['id_kelas'], 'required'],
+            [['id_kelas'], 'integer'],
             [['nama_kelas'], 'string', 'max' => 100]
         ]);
     }

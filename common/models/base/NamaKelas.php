@@ -34,6 +34,8 @@ class NamaKelas extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['id_kelas'], 'required'],
+            [['id_kelas'], 'integer'],
             [['nama_kelas'], 'string', 'max' => 100]
         ];
     }
