@@ -30,6 +30,23 @@
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
+                    [
+                        'label' => 'Master Data', 
+                        'icon' => 'book',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Agama', 'icon' => 'file-code-o', 'url' => ['/agama']],
+                            ['label' => 'Jurusan', 'icon' => 'file-code-o', 'url' => ['/jurusan']],
+                            ['label' => 'Hari Efektif', 'icon' => 'file-code-o', 'url' => ['/hari-efektif']],
+                            ['label' => 'Hari Tidak Efektif', 'icon' => 'file-code-o', 'url' => ['/hari-tidak-efektif']],
+                            ['label' => 'Kategori Aturan', 'icon' => 'file-code-o', 'url' => ['/kategori-aturan']],
+                            ['label' => 'Pegawai', 'icon' => 'file-code-o', 'url' => ['/pegawai']],
+                            ['label' => 'Pekerjaan', 'icon' => 'file-code-o', 'url' => ['/pekerjaan']],
+                            ['label' => 'Penghargaan', 'icon' => 'file-code-o', 'url' => ['/penghargaan']],
+                            ['label' => 'Tindakan', 'icon' => 'file-code-o', 'url' => ['/tindakan']],
+                        ]
+                    ],
+
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
