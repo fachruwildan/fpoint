@@ -96,17 +96,17 @@ class Siswa extends \yii\db\ActiveRecord
     {
         return [
             'id_siswa' => 'Id Siswa',
-            'id_wali_murid' => 'Id Wali Murid',
-            'id_agama' => 'Id Agama',
-            'nis' => 'Nis',
+            'id_wali_murid' => 'Wali Murid',
+            'id_agama' => 'Agama',
+            'nis' => 'NIS',
             'nama_siswa' => 'Nama Siswa',
-            'tempat_lahir_siswa' => 'Tempat Lahir Siswa',
-            'tanggal_lahir_siswa' => 'Tanggal Lahir Siswa',
-            'jenis_kelamin_siswa' => 'Jenis Kelamin Siswa',
-            'alamat_rumah_siswa' => 'Alamat Rumah Siswa',
-            'alamat_domisili_siswa' => 'Alamat Domisili Siswa',
-            'no_hp_siswa' => 'No Hp Siswa',
-            'foto_siswa' => 'Foto Siswa',
+            'tempat_lahir_siswa' => 'Tempat Lahir',
+            'tanggal_lahir_siswa' => 'Tanggal Lahir',
+            'jenis_kelamin_siswa' => 'Jenis Kelamin',
+            'alamat_rumah_siswa' => 'Alamat Rumah',
+            'alamat_domisili_siswa' => 'Alamat Domisili',
+            'no_hp_siswa' => 'No HP',
+            'foto_siswa' => 'Foto',
         ];
     }
     
