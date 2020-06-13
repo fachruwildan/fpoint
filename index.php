@@ -1,14 +1,14 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\TindakanSearch */
+/* @var $searchModel app\models\WaliMuridSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
 
-$this->title = 'Tindakan';
+$this->title = 'Wali Murid';
 $this->params['breadcrumbs'][] = $this->title;
 $search = "$('.search-button').click(function(){
 	$('.search-form').toggle(1000);
@@ -16,7 +16,7 @@ $search = "$('.search-button').click(function(){
 });";
 $this->registerJs($search);
 ?>
-<div class="tindakan-index">
+<div class="wali-murid-index">
 
     <div class="row">
         <div class="col-md-12">
@@ -26,7 +26,7 @@ $this->registerJs($search);
                                             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
                     
                         <p>
-                            <?= Html::a('Create Tindakan', ['create'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Create Wali Murid', ['create'], ['class' => 'btn btn-success']) ?>
                                                 <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
                                             </p>
                                             <div class="search-form" style="display:none">
@@ -37,8 +37,39 @@ $this->registerJs($search);
                                         <?php 
                         $gridColumn = [
                             ['class' => 'yii\grid\SerialColumn'],
-                                        		                            'id_tindakan',
-		                    		                            'tindakan:ntext',
+                                        		                            'id_wali_murid',
+		                    		                            [
+                'attribute' => 'id_pekerjaan',
+                'label' => 'Id Pekerjaan',
+                'value' => function($model){                   
+                    return $model->pekerjaan->id_pekerjaan;                   
+                },
+                'filterType' => GridView::FILTER_SELECT2,
+                'filter' => \yii\helpers\ArrayHelper::map(\common\models\Pekerjaan::find()->asArray()->all(), 'id_pekerjaan', 'id_pekerjaan'),
+                'filterWidgetOptions' => [
+                    'pluginOptions' => ['allowClear' => true],
+                ],
+                'filterInputOptions' => ['placeholder' => 'Pekerjaan', 'id' => 'grid-wali-murid-search-id_pekerjaan']
+            ],
+		                    		                            [
+                'attribute' => 'id_agama',
+                'label' => 'Id Agama',
+                'value' => function($model){                   
+                    return $model->agama->agama;                   
+                },
+                'filterType' => GridView::FILTER_SELECT2,
+                'filter' => \yii\helpers\ArrayHelper::map(\common\models\Agama::find()->asArray()->all(), 'id_agama', 'agama'),
+                'filterWidgetOptions' => [
+                    'pluginOptions' => ['allowClear' => true],
+                ],
+                'filterInputOptions' => ['placeholder' => 'Agama', 'id' => 'grid-wali-murid-search-id_agama']
+            ],
+		                    		                            'nama_wali_murid',
+		                    		                            'tempat_lahir_wali_murid',
+		                    		                            'tanggal_lahir_wali_murid',
+		                    		                            'jenis_kelamin_wali_murid',
+		                    		                            'alamat_rumah_wali_murid:ntext',
+		                    		                            'no_hp_wali_murid',
 		                                                [
                                 'class' => 'yii\grid\ActionColumn',
                                                 ],
@@ -49,7 +80,7 @@ $this->registerJs($search);
                             'filterModel' => $searchModel,
         'columns' => $gridColumn,
                             'pjax' => true,
-                            'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-tindakan']],
+                            'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-wali-murid']],
                             'panel' => [
                                 //'type' => GridView::TYPE_PRIMARY,
                                 'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),
