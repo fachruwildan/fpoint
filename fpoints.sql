@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 12, 2020 at 12:06 PM
+-- Generation Time: Jun 13, 2020 at 10:40 AM
 -- Server version: 10.1.44-MariaDB-0ubuntu0.18.04.1
 -- PHP Version: 7.2.26-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -193,8 +193,7 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`id_kelas`, `id_jurusan`, `id_wali_kelas`, `kelas`, `grade`) VALUES
-(3, 1, 8, 'A', 'XII'),
-(10, 1, 4, 'B', 'XII');
+(19, 1, 8, 'C', 'XII');
 
 -- --------------------------------------------------------
 
@@ -225,6 +224,13 @@ CREATE TABLE `nama_kelas` (
   `id_kelas` int(11) NOT NULL,
   `nama_kelas` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nama_kelas`
+--
+
+INSERT INTO `nama_kelas` (`id_kelas`, `nama_kelas`) VALUES
+(19, 'XII Rekayasa Perangkat Lunak C');
 
 -- --------------------------------------------------------
 
@@ -359,6 +365,13 @@ CREATE TABLE `siswa` (
   `foto_siswa` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `siswa`
+--
+
+INSERT INTO `siswa` (`id_siswa`, `id_wali_murid`, `id_agama`, `nis`, `nama_siswa`, `tempat_lahir_siswa`, `tanggal_lahir_siswa`, `jenis_kelamin_siswa`, `alamat_rumah_siswa`, `alamat_domisili_siswa`, `no_hp_siswa`, `foto_siswa`) VALUES
+(1, 1, 1, '1', '1', '1', '2020-06-02', 'P', 'L', 'A', '091882', '12');
+
 -- --------------------------------------------------------
 
 --
@@ -382,6 +395,17 @@ CREATE TABLE `status_absensi` (
   `id_status_absensi` int(11) NOT NULL,
   `keterangan_status_absensi` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `status_absensi`
+--
+
+INSERT INTO `status_absensi` (`id_status_absensi`, `keterangan_status_absensi`) VALUES
+(1, 'Alpha'),
+(2, 'Mbolos'),
+(3, 'Hadir'),
+(4, 'Sakit'),
+(5, 'Izin');
 
 -- --------------------------------------------------------
 
@@ -436,7 +460,6 @@ CREATE TABLE `wali_kelas` (
 --
 
 INSERT INTO `wali_kelas` (`id_wali_kelas`, `id_pegawai`) VALUES
-(4, 1),
 (8, 2);
 
 -- --------------------------------------------------------
@@ -452,10 +475,17 @@ CREATE TABLE `wali_murid` (
   `nama_wali_murid` varchar(50) NOT NULL,
   `tempat_lahir_wali_murid` varchar(50) NOT NULL,
   `tanggal_lahir_wali_murid` date NOT NULL,
-  `jenis_kelamin_wali_murid` char(1) NOT NULL,
+  `jenis_kelamin_wali_murid` enum('L','P') NOT NULL,
   `alamat_rumah_wali_murid` text NOT NULL,
   `no_hp_wali_murid` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wali_murid`
+--
+
+INSERT INTO `wali_murid` (`id_wali_murid`, `id_pekerjaan`, `id_agama`, `nama_wali_murid`, `tempat_lahir_wali_murid`, `tanggal_lahir_wali_murid`, `jenis_kelamin_wali_murid`, `alamat_rumah_wali_murid`, `no_hp_wali_murid`) VALUES
+(1, 2, 1, 'Defri Indra Mahardika', 'Ponorogo', '2002-05-19', 'L', 'Ds. Pulung Kec. Pulung', '085604845437');
 
 --
 -- Indexes for dumped tables
@@ -681,7 +711,7 @@ ALTER TABLE `kategori_aturan`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
@@ -711,7 +741,7 @@ ALTER TABLE `sanksi`
 -- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id_siswa` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_siswa` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sp`
@@ -723,7 +753,7 @@ ALTER TABLE `sp`
 -- AUTO_INCREMENT for table `status_absensi`
 --
 ALTER TABLE `status_absensi`
-  MODIFY `id_status_absensi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_status_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tindakan`
@@ -747,7 +777,7 @@ ALTER TABLE `wali_kelas`
 -- AUTO_INCREMENT for table `wali_murid`
 --
 ALTER TABLE `wali_murid`
-  MODIFY `id_wali_murid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_wali_murid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
