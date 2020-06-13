@@ -3,6 +3,7 @@
 namespace common\models\base;
 
 use Yii;
+use borales\extensions\phoneInput\PhoneInputValidator;
 
 /**
  * This is the base model class for table "siswa".
@@ -24,7 +25,7 @@ use Yii;
  * @property \common\models\StatusAbsensi[] $statusAbsensis
  * @property \common\models\AkumulasiPoint[] $akumulasiPoints
  * @property \common\models\Sanksi[] $sanksis
- * @property \common\models\OnKelasSiswa[] $onKelasSiswas
+ * @property \common\models\OnKelasSiswa $onKelasSiswa
  * @property \common\models\Kelas[] $kelas
  * @property \common\models\Pelanggaran[] $pelanggarans
  * @property \common\models\Aturan[] $aturans
@@ -50,7 +51,7 @@ class Siswa extends \yii\db\ActiveRecord
             'statusAbsensis',
             'akumulasiPoints',
             'sanksis',
-            'onKelasSiswas',
+            'onKelasSiswa',
             'kelas',
             'pelanggarans',
             'aturans',
@@ -71,13 +72,13 @@ class Siswa extends \yii\db\ActiveRecord
             [['id_wali_murid', 'id_agama', 'nis', 'nama_siswa', 'tempat_lahir_siswa', 'tanggal_lahir_siswa', 'jenis_kelamin_siswa', 'alamat_rumah_siswa', 'alamat_domisili_siswa', 'no_hp_siswa'], 'required'],
             [['id_wali_murid', 'id_agama'], 'integer'],
             [['tanggal_lahir_siswa'], 'safe'],
-            [['alamat_rumah_siswa', 'alamat_domisili_siswa'], 'string'],
+            [['jenis_kelamin_siswa', 'alamat_rumah_siswa', 'alamat_domisili_siswa'], 'string'],
             [['nis'], 'string', 'max' => 20],
             [['nama_siswa'], 'string', 'max' => 50],
             [['tempat_lahir_siswa'], 'string', 'max' => 40],
-            [['jenis_kelamin_siswa'], 'string', 'max' => 1],
             [['no_hp_siswa'], 'string', 'max' => 15],
-            [['foto_siswa'], 'string', 'max' => 255]
+            [['foto_siswa'], 'string', 'max' => 255],
+            [['no_hp_siswa'], PhoneInputValidator::className()],
         ];
     }
 
@@ -95,17 +96,17 @@ class Siswa extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_siswa' => 'Id Siswa',
+            'id_siswa' => 'Id',
             'id_wali_murid' => 'Wali Murid',
             'id_agama' => 'Agama',
             'nis' => 'NIS',
-            'nama_siswa' => 'Nama Siswa',
+            'nama_siswa' => 'Nama',
             'tempat_lahir_siswa' => 'Tempat Lahir',
             'tanggal_lahir_siswa' => 'Tanggal Lahir',
             'jenis_kelamin_siswa' => 'Jenis Kelamin',
             'alamat_rumah_siswa' => 'Alamat Rumah',
             'alamat_domisili_siswa' => 'Alamat Domisili',
-            'no_hp_siswa' => 'No HP',
+            'no_hp_siswa' => 'No Hp',
             'foto_siswa' => 'Foto',
         ];
     }
@@ -145,9 +146,9 @@ class Siswa extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getOnKelasSiswas()
+    public function getOnKelasSiswa()
     {
-        return $this->hasMany(\common\models\OnKelasSiswa::className(), ['id_siswa' => 'id_siswa']);
+        return $this->hasOne(\common\models\OnKelasSiswa::className(), ['id_siswa' => 'id_siswa']);
     }
         
     /**
@@ -223,8 +224,8 @@ class Siswa extends \yii\db\ActiveRecord
     {
         return new \app\models\SiswaQuery(get_called_class());
     }
-     
-    public function formName() {
+
+    public function formName(){
         return '';
     }
 }
