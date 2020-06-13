@@ -5,21 +5,21 @@ use yii\widgets\DetailView;
 use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Sanksi */
+/* @var $model common\models\Tindakan */
 
-$this->title = $model->id_sanksi;
-$this->params['breadcrumbs'][] = ['label' => 'Sanksi', 'url' => ['index']];
+$this->title = $model->tindakan;
+$this->params['breadcrumbs'][] = ['label' => 'Tindakan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="sanksi-view">
+<div class="tindakan-view">
 
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header">
                                                                     
-                            <?= Html::a('Update', ['update', 'id' => $model->id_sanksi], ['class' => 'btn btn-primary']) ?>
-                            <?= Html::a('Delete', ['delete', 'id' => $model->id_sanksi], [
+                            <?= Html::a('Update', ['update', 'id' => $model->id_tindakan], ['class' => 'btn btn-primary']) ?>
+                            <?= Html::a('Delete', ['delete', 'id' => $model->id_tindakan], [
                                 'class' => 'btn btn-danger',
                                 'data' => [
                                     'confirm' => 'Are you sure you want to delete this item?',
@@ -32,10 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <!-- <div class="row"> -->
                 <?php 
                     $gridColumn = [
-                        'id_sanksi',
-        'uraian:ntext',
-        'minimum_point',
-        'maximum_point',
+                        'id_tindakan',
+        'tindakan:ntext',
                     ];
                     echo DetailView::widget([
                         'model' => $model,
@@ -46,31 +44,34 @@ $this->params['breadcrumbs'][] = $this->title;
                                 
                     <div class="pt-3">
                         <?php
-                        if($providerAkumulasiPoint->totalCount){
-                            $gridColumnAkumulasiPoint = [
+                        if($providerAturan->totalCount){
+                            $gridColumnAturan = [
                                 ['class' => 'yii\grid\SerialColumn'],
-                                    [
-                'attribute' => 'siswa.id_siswa',
-                'label' => 'Id Siswa'
+                                    'id_aturan',
+            [
+                'attribute' => 'kategori.kategori_aturan',
+                'label' => 'Id Kategori'
             ],
-                        'tanggal',
+                        'pasal',
+            'uraian_aturan:ntext',
+            'point_aturan',
                             ];
                             echo Gridview::widget([
-                                'dataProvider' => $providerAkumulasiPoint,
+                                'dataProvider' => $providerAturan,
                                 'pjax' => true,
-                                'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-akumulasi-point']],
+                                'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-aturan']],
                                 'panel' => [
                                     //'type' => GridView::TYPE_PRIMARY,
-                                    'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode('Akumulasi Point'),
+                                    'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode('Aturan'),
                                 ],
                                                         'export' => false,
-                                                        'columns' => $gridColumnAkumulasiPoint
+                                                        'columns' => $gridColumnAturan
                             ]);
                         }
                         ?>
 
                     </div>
-                                                                                            </div>
+                                                        </div>
             </div>
         </div>
     </div>

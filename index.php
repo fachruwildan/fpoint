@@ -1,14 +1,14 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\SanksiSearch */
+/* @var $searchModel app\models\TindakanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
 
-$this->title = 'Sanksi';
+$this->title = 'Tindakan';
 $this->params['breadcrumbs'][] = $this->title;
 $search = "$('.search-button').click(function(){
 	$('.search-form').toggle(1000);
@@ -16,7 +16,7 @@ $search = "$('.search-button').click(function(){
 });";
 $this->registerJs($search);
 ?>
-<div class="sanksi-index">
+<div class="tindakan-index">
 
     <div class="row">
         <div class="col-md-12">
@@ -26,7 +26,7 @@ $this->registerJs($search);
                                             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
                     
                         <p>
-                            <?= Html::a('Create Sanksi', ['create'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Create Tindakan', ['create'], ['class' => 'btn btn-success']) ?>
                                                 <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
                                             </p>
                                             <div class="search-form" style="display:none">
@@ -37,10 +37,8 @@ $this->registerJs($search);
                                         <?php 
                         $gridColumn = [
                             ['class' => 'yii\grid\SerialColumn'],
-                                        		                            'id_sanksi',
-		                    		                            'uraian:ntext',
-		                    		                            'minimum_point',
-		                    		                            'maximum_point',
+                                        		                            'id_tindakan',
+		                    		                            'tindakan:ntext',
 		                                                [
                                 'class' => 'yii\grid\ActionColumn',
                                                 ],
@@ -51,7 +49,7 @@ $this->registerJs($search);
                             'filterModel' => $searchModel,
         'columns' => $gridColumn,
                             'pjax' => true,
-                            'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-sanksi']],
+                            'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-tindakan']],
                             'panel' => [
                                 //'type' => GridView::TYPE_PRIMARY,
                                 'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),

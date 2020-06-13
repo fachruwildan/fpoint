@@ -4,24 +4,20 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\SanksiSearch */
+/* @var $model app\models\TindakanSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="form-sanksi-search">
+<div class="form-tindakan-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id_sanksi')->textInput(['placeholder' => 'Id Sanksi']) ?>
+    <?= $form->field($model, 'id_tindakan')->textInput(['placeholder' => 'Id Tindakan']) ?>
 
-    <?= $form->field($model, 'uraian')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'minimum_point')->textInput(['placeholder' => 'Minimum Point']) ?>
-
-    <?= $form->field($model, 'maximum_point')->textInput(['placeholder' => 'Maximum Point']) ?>
+    <?= $form->field($model, 'tindakan')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

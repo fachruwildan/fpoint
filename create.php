@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Sanksi */
+/* @var $model common\models\Tindakan */
 
-$this->title = 'Create Sanksi';
-$this->params['breadcrumbs'][] = ['label' => 'Sanksi', 'url' => ['index']];
+$this->title = 'Create Tindakan';
+$this->params['breadcrumbs'][] = ['label' => 'Tindakan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="sanksi-create">
+<div class="tindakan-create">
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">

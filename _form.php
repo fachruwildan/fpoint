@@ -4,39 +4,35 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Sanksi */
+/* @var $model common\models\Tindakan */
 /* @var $form yii\widgets\ActiveForm */
 
 \mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
     'viewParams' => [
-        'class' => 'AkumulasiPoint', 
-        'relID' => 'akumulasi-point', 
-        'value' => \yii\helpers\Json::encode($model->akumulasiPoints),
+        'class' => 'Aturan', 
+        'relID' => 'aturan', 
+        'value' => \yii\helpers\Json::encode($model->aturans),
         'isNewRecord' => ($model->isNewRecord) ? 1 : 0
     ]
 ]);
 ?>
 
-<div class="sanksi-form">
+<div class="tindakan-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->errorSummary($model); ?>
 
-    <?= $form->field($model, 'id_sanksi')->textInput(['placeholder' => 'Id Sanksi']) ?>
+    <?= $form->field($model, 'id_tindakan')->textInput(['placeholder' => 'Id Tindakan']) ?>
 
-    <?= $form->field($model, 'uraian')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'minimum_point')->textInput(['placeholder' => 'Minimum Point']) ?>
-
-    <?= $form->field($model, 'maximum_point')->textInput(['placeholder' => 'Maximum Point']) ?>
+    <?= $form->field($model, 'tindakan')->textarea(['rows' => 6]) ?>
 
     <?php
     $forms = [
         [
-            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode('AkumulasiPoint'),
-            'content' => $this->render('_formAkumulasiPoint', [
-                'row' => \yii\helpers\ArrayHelper::toArray($model->akumulasiPoints),
+            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode('Aturan'),
+            'content' => $this->render('_formAturan', [
+                'row' => \yii\helpers\ArrayHelper::toArray($model->aturans),
             ]),
         ],
     ];
