@@ -56,7 +56,7 @@ class StatusAbsensi extends \yii\db\ActiveRecord
     {
         return [
             'id_status_absensi' => 'Id Status Absensi',
-            'keterangan_status_absensi' => 'Keterangan Status Absensi',
+            'keterangan_status_absensi' => 'Keterangan',
         ];
     }
     
